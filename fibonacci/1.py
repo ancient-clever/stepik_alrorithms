@@ -1,10 +1,9 @@
 def fib(n):
-    f = [0, 1]
-    if n > 1:
-        for r in range(2, n+1):
-            i = f[r-1] + f[r-2]
-            f.append(i)
-    return f[n]
+    last, current = 0, 1
+    for r in range(1, n):
+        last, current = current, last + current
+
+    return current
 
 
 def main():

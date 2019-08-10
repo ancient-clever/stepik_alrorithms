@@ -3,7 +3,7 @@ def fib_digit(n):
     for r in range(1, n):
         last, current = current, (last + current) % 10
 
-    return current % 10
+    return current
 
 
 def main():

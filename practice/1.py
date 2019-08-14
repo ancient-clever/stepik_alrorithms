@@ -29,4 +29,12 @@ new_fib1 = memo(fib1)
 from functools import lru_cache
 
 
-fib3 = lru_cache(maxsize=None)(fib1)
+fib_cache = lru_cache(maxsize=None)(fib1)
+
+
+def fib3(n):
+    assert n >= 0
+    f0, f1 = 0, 1
+    for i in range(n-1):
+        f0, f1 = f1, f0 + f1
+    return f1

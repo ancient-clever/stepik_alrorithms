@@ -18,3 +18,12 @@ def gcd1(a, b):
     for d in reversed(range(max(a, b) + 1)):
         if d == 0 or a % d == b % d == 0:
             return d
+
+
+def gcd2(a, b):
+    while a and b:
+        if a >= b:
+            a %= b
+        else:
+            b %= a
+    return max(a, b)

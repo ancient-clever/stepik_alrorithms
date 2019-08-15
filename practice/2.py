@@ -35,5 +35,12 @@ def gcd3(a, b):
         return max(a, b)
     elif a >= b:
         return gcd3(a % b, b)
-    else
+    else:
         return gcd3(a, b % a)
+
+
+def gcd4(a, b):
+    assert  a >= 0 and b >= 0
+    if a == 0 or b == 0:
+        return max(a, b)
+    return gcd4(b % a, a)

@@ -1,3 +1,6 @@
+from operator import itemgetter
+
+
 def cross_points(sections):
     points = [sections.pop(0)[1]]
     for left, right in sections:
@@ -10,11 +13,11 @@ def main():
     n = int(input())
     sections = []
     for r in range(n):
-        section = input().split()
-        sections.append(section)
-    points = cross_points(sections)
+        left, right = input().split()
+        sections.append([int(left), int(right)])
+    points = cross_points(sorted(sections, key=itemgetter(1)))
     print(str(len(points)))
-    print(' '.join(points))
+    print(' '.join(str(point) for point in points))
 
 
 if __name__ == "__main__":

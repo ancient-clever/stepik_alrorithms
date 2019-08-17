@@ -1,25 +1,20 @@
 def cross_points(sections):
-    # провкряьт лежит ли точка на отрезке
-    points = []
-    while sections:
-        a, b = sections.pop()
-        for c, d in sections:
-            if a <= c <= b:
-                points.append(c)
-            elif c <= a <= d:
-                points.append(a)
-
+    points = [sections.pop(0)[1]]
+    for left, right in sections:
+        if left > points[-1]:
+            points.append(right)
     return points
 
 
 def main():
-    # n = int(input())
-    # sections = []
-    # for r in range(n):
-    #     section = input().split()
-    #     sections.append(section)
-    # print(cross_points(sections))
-    print(cross_points([['1', '3'], ['2', '5']]))
+    n = int(input())
+    sections = []
+    for r in range(n):
+        section = input().split()
+        sections.append(section)
+    points = cross_points(sections)
+    print(str(len(points)))
+    print(' '.join(points))
 
 
 if __name__ == "__main__":

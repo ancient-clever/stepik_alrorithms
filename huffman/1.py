@@ -1,9 +1,13 @@
 def huffman(n):
-    pass
+    letters = {}
+    for letter in n:
+        if letter not in letters:
+            letters[letter] = n.count(letter)
+    print(letters)
 
 
 def main():
-    n = int(input())
+    n = input()
     print(huffman(n))
 
 

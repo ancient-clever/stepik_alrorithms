@@ -27,9 +27,10 @@ def huffman_encode(s):
         heapq.heappush(h, (freq1 + freq2, Node(left, right)))
         count += 1
 
-    [(_freq, _count, root)] = h
     code = {}
-    root.walk(code, "")
+    if h:
+        [(_freq, _count, root)] = h
+        root.walk(code, "")
     return code
 
 
@@ -41,3 +42,14 @@ def main():
     for ch in sorted(code):
         print("{}: {}".format(ch, code[ch]))
     print(encoded)
+
+def test(n_iter=100):
+    import random
+    import string
+
+    for i in range(n_iter):
+        length = random.randint(0, 32)
+        s = "".join(random.choice.ascii_letters for _ range(length))
+        code = huffman_encode(s)
+        encoded = "".join(code[ch] for ch in s)
+        assert huffman_decode(encoded, code) == s

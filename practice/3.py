@@ -2,7 +2,19 @@ import sys
 
 
 def fractional_knapsack(capacity, values_and_weights):
-    return 0
+    order = [(v / w, w) for v, w in values_and_weights]
+    order.sort(reverse=True)
+
+    acc = 0
+    for v_per_w, w in order:
+        if w < capacity:
+            acc += v_per_w * w
+            capacity -= w
+        else:
+            acc += v_per_w * capacity
+            break
+
+    return acc
 
 
 def main():

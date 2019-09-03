@@ -2,10 +2,22 @@ import sys
 
 
 def find_pos(xs, query):
-    try:
-        return xs.index(query) + 1
-    except ValueError:
-        return -1
+    lo, hi = 0, len(xs)
+    while lo < hi:
+        mid = (lo + hi) // 2
+        if query < xs[mid]:
+            hi = mid
+        elif query > xs[mid]:
+            lo = mid + 1
+        else:
+            return mid + 1
+    return -1
+
+
+def test():
+    assert find_pos([], 42) == -1
+    assert find_pos([42], 42) == 1
+    assert find_pos([42], 24) == -1
 
 
 def main():

@@ -2,11 +2,11 @@ import sys
 
 
 def find_pos(xs, query):
-    lo, hi = 0, len(xs)
+    lo, hi = 0, len(xs) - 1
     while lo < hi:
         mid = (lo + hi) // 2
         if query < xs[mid]:
-            hi = mid
+            hi = mid - 1
         elif query > xs[mid]:
             lo = mid + 1
         else:
